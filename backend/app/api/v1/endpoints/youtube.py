@@ -3,12 +3,11 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, field_validator, Field
 from typing import Optional, List
 import re
-from urllib.parse import urlparse, parse_qs
-import httpx
+from urllib.parse import urlparse
 from datetime import datetime
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.formatters import TextFormatter
-import asyncio
+
 
 router = APIRouter()
 
@@ -220,17 +219,3 @@ async def get_supported_youtube_formats():
             "m.youtube.com"
         ]
     }
-
-# Add missing import for asyncio
-
-
-# Update app/api/v1/api.py - ADD this import and router
-# Add this line to your existing imports:
-# from app.api.v1.endpoints import youtube
-
-# Add this line to include the router:
-# api_router.include_router(
-#     youtube.router, 
-#     prefix="/youtube", 
-#     tags=["youtube"]
-# )
